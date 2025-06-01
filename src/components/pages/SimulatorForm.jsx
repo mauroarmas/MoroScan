@@ -20,9 +20,8 @@ const SimulatorForm = () => {
         </div>
         <div className="btn">
           <button className="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-          <button className="button2">Sign Up</button>
+          <button className="button1">Sign Up</button>
         </div>
-        <button className="button3">Forgot Password</button>
       </form>
     </StyledWrapper>
   );
@@ -88,55 +87,6 @@ const StyledWrapper = styled.div`
     margin-top: 2.5em;
   }
 
-  .button1 {
-    padding: 0.5em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
-    border-radius: 5px;
-    margin-right: 0.5em;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-  }
-
-  .button1:hover {
-    background-color: black;
-    color: white;
-  }
-
-  .button2 {
-    padding: 0.5em;
-    padding-left: 2.3em;
-    padding-right: 2.3em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-  }
-
-  .button2:hover {
-    background-color: black;
-    color: white;
-  }
-
-  .button3 {
-    margin-bottom: 3em;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-  }
-
-  .button3:hover {
-    background-color: red;
-    color: white;
-  }`;
+`;
 
 export default SimulatorForm;

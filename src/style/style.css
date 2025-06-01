@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap');
+
 #root {
     display: flex;
     flex-direction: column;
@@ -7,8 +9,21 @@
   .contenido{
     position: relative;
   }
-  h2{
+  h1 h3 {
     font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  
+  p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17px;
+  }
+  .height100{
+    height: 100%;
   }
   
   .backPrincipal {
@@ -19,7 +34,7 @@
   
   }
   .backgroundCard{
-    background-color: #537d3d;
+    background-color: #486832;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -27,16 +42,29 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    color: #ffffff;
+  }
+
+  .backgroundImages{
+    background-color: #284e0f;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   
-  #loginButtom{
-    color: #3e72af;
-    font-size: 38px;
+  .button1 {
+    padding: 0.5em;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
+    border-radius: 5px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #324621;
+    color: white;
   }
-  #signUpButtom{
-    color: #3e72af;
-    font-size: 27px;
-    margin-right: 10px;
-    margin-top: 2px;
+
+  .button1:hover {
+    background-color: #171d12;
+    color: white;
   }

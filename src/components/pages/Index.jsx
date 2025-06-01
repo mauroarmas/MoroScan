@@ -1,33 +1,68 @@
 import React from "react";
-import { Button, Card, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import img1 from "../../assets/img1.jpg";
+import img2 from "../../assets/img2.jpg";
+import img3 from "../../assets/img3.png";
 
 const Index = () => {
   return (
-    <Container className="text-center py-5 d-flex align-items-center justify-content-center vh-100">
-      <Card className="p-4 h-100 d-flex flex-column justify-content-between backgroundCard">
-        <div className="h-25">
-          <h1>MoroScan 🐛</h1>
-          <p>
+    <Container className=" py-5 d-flex align-items-center justify-content-center vh-100">
+      <div className="p-4 h-100 d-flex flex-column justify-content-between backgroundCard">
+        <div className=" text-center h-25 d-flex flex-column justify-content-center align-items-center">
+          <h1>MoroScan <i class="bi bi-leaf-fill"></i></h1>
+          <p className="my-3">
             Anticipa el riesgo, cuidá tu cosecha: visualiza el efecto del “bicho
             moro” en el tabaco.
           </p>
         </div>
-        <div className="h-75">
-          <div>
-            <p>Si desea iniciar una nueva simulación pulse el botón iniciar</p>
-            <p>Si desea ver el historial de simulaciones pulse el botón historial</p>
-            <Button variant="dark" className="m-2">
-              Iniciar
-            </Button>
-            <Button variant="secondary" className="m-2">
-              Historial
-            </Button>
+        <div className="h-75 d-flex flex-row justify-content-center align-items-center ">
+          <div className="w-50">
+            <div>
+              <h3 className="text-center mb-3">Bienvenido</h3>
+              <p>Si desea iniciar una nueva simulación pulse el botón iniciar</p>
+              <p className="mb-5">
+                Si desea ver el historial de simulaciones pulse el botón historial
+              </p>
+            </div>
+            <div className="d-flex justify-content-center align-items-center mt-5">
+              <button className="m-2 button1">
+                Iniciar
+              </button>
+              <button className="m-2 button1">
+                Historial
+              </button>
+            </div>
           </div>
-          <div>
-            <p>imagenes</p>
+          <div className="w-50 d-flex flex-column justify-content-between align-items-center backgroundImages p-1">
+            <div className="h-50">
+              <img
+                src={img1}
+                alt="img1"
+                className="img-fluid w-100"
+                width={50}
+              />
+            </div>
+            <div className="h-50 d-flex mt-1 gap-1">
+              <div className="w-50 h-100">
+                <img
+                  src={img2}
+                  alt="img2"
+                  className="img-fluid w-100 h-100 object-fit-cover"
+                  width={50}
+                />
+              </div>
+              <div className="w-50 h-100">
+                <img
+                  src={img3}
+                  alt="img3"
+                  className="img-fluid w-100 h-100 "
+                  width={50}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </Card>
+      </div>
     </Container>
   );
 };
