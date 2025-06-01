@@ -3,13 +3,17 @@ import { Container } from "react-bootstrap";
 import img1 from "../../assets/img1.jpg";
 import img2 from "../../assets/img2.jpg";
 import img3 from "../../assets/img3.png";
+import PrincBtn from "../PrincBtn";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
     <Container className=" py-5 d-flex align-items-center justify-content-center vh-100">
       <div className="p-4 h-100 d-flex flex-column justify-content-between backgroundCard">
         <div className=" text-center h-25 d-flex flex-column justify-content-center align-items-center">
-          <h1>MoroScan <i class="bi bi-leaf-fill"></i></h1>
+          <h1>
+            MoroScan <i class="bi bi-leaf-fill"></i>
+          </h1>
           <p className="my-3">
             Anticipa el riesgo, cuidá tu cosecha: visualiza el efecto del “bicho
             moro” en el tabaco.
@@ -19,18 +23,22 @@ const Index = () => {
           <div className="w-50">
             <div>
               <h3 className="text-center mb-3">Bienvenido</h3>
-              <p>Si desea iniciar una nueva simulación pulse el botón iniciar</p>
+              <p>
+                Si desea iniciar una nueva simulación pulse el botón iniciar
+              </p>
               <p className="mb-5">
-                Si desea ver el historial de simulaciones pulse el botón historial
+                Si desea ver el historial de simulaciones pulse el botón
+                historial
               </p>
             </div>
-            <div className="d-flex justify-content-center align-items-center mt-5">
-              <button className="m-2 button1">
-                Iniciar
-              </button>
-              <button className="m-2 button1">
-                Historial
-              </button>
+            <div className="d-flex justify-content-center align-items-center mt-5 gap-3">
+              <Link to="/simulator">
+                <PrincBtn text="Simular"></PrincBtn>
+              </Link>
+              <Link to="/history">
+                <PrincBtn text="Historial"></PrincBtn>
+              </Link>
+
             </div>
           </div>
           <div className="w-50 d-flex flex-column justify-content-between align-items-center backgroundImages p-1">

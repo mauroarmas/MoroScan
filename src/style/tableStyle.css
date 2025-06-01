@@ -1,0 +1,21 @@
+
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .table-scroll {
+    max-height: 300px; /* Ajusta el alto máximo deseado */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .table-scroll thead th {
+    position: sticky;
+    top: 0;
+    background-color: #212529; /* color oscuro para thead */
+    color: white;
+    z-index: 1;
+  }
+  
+  
+  
