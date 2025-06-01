@@ -1,0 +1,42 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+  }
+  .contenido{
+    position: relative;
+  }
+  h2{
+    font-family: "Oswald", sans-serif;
+  }
+  
+  .backPrincipal {
+    margin: 0;
+    width: 100%;
+    background-color: #537d3d;
+    min-height: 100vh; 
+  
+  }
+  .backgroundCard{
+    background-color: #537d3d;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  #loginButtom{
+    color: #3e72af;
+    font-size: 38px;
+  }
+  #signUpButtom{
+    color: #3e72af;
+    font-size: 27px;
+    margin-right: 10px;
+    margin-top: 2px;
+  }
