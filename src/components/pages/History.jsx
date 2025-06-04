@@ -62,14 +62,32 @@ const History = () => {
                     key={production.id_production}
                     className="clickable-row"
                     // onClick={handleRowClick}
-                    onClick={() => navigate(`/simulation/${production.id_production}`)}
+                    onClick={() =>
+                      navigate(`/simulation/${production.id_production}`)
+                    }
                   >
                     <td>{production.date_simulation}</td>
                     <td>{production.quantity_plots}</td>
-                    <td>{Number(production.expected_production).toFixed(2)}</td>
-                    <td>{Number(production.lost_production).toFixed(2)}</td>
-                    <td>{Number(production.real_production).toFixed(2)}</td>
-                    <td>{production.spring_type}</td>
+                    <td>{Number(production.expected_production).toFixed(2)} Tn.</td>
+                    <td>{Number(production.lost_production).toFixed(2)} Tn.</td>
+                    <td>{Number(production.real_production).toFixed(2)} Tn.</td>
+                    <td>
+                      {production.spring_type === 1 && (
+                        <>
+                          <span>Tipo 1 - Cálida ☀️</span>
+                        </>
+                      )}
+                      {production.spring_type === 2 && (
+                        <>
+                          <span>Tipo 2 - Normal 🌤</span>
+                        </>
+                      )}
+                      {production.spring_type === 3 && (
+                        <>
+                          <span>Tipo 3 - Fresca 🌥</span>
+                        </>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

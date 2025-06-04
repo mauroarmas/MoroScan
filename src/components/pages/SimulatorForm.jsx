@@ -16,19 +16,6 @@ const SimulatorForm = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const response = await axios.post("http://localhost:8080/production", {
-  //       quantity_plots: data.quantity_plots,
-  //     });
-  //     console.log(response.data);
-  //     const simulationId = response.data.id_production;
-  //     navigate("/simulation/" + simulationId);
-
-  //   } catch (error) {
-  //     console.error("Error al enviar los datos:", error);
-  //   }
-  // };
 
   const onSubmit = async (data) => {
     try {
