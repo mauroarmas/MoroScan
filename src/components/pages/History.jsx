@@ -87,7 +87,7 @@ const History = () => {
                       )}
                       {production.spring_type === 3 && (
                         <>
-                          <span>Tipo 3 - Fresca 🌥</span>
+                          <span>Tipo 3 - Fresca 🌧</span>
                         </>
                       )}
                     </td>
