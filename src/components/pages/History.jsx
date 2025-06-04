@@ -54,6 +54,7 @@ const History = () => {
                   <th>Pérdida</th>
                   <th>Producción Real</th>
                   <th>Tipo de primavera</th>
+                  <th>Inversión</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,7 +69,9 @@ const History = () => {
                   >
                     <td>{production.date_simulation}</td>
                     <td>{production.quantity_plots}</td>
-                    <td>{Number(production.expected_production).toFixed(2)} Tn.</td>
+                    <td>
+                      {Number(production.expected_production).toFixed(2)} Tn.
+                    </td>
                     <td>{Number(production.lost_production).toFixed(2)} Tn.</td>
                     <td>{Number(production.real_production).toFixed(2)} Tn.</td>
                     <td>
@@ -87,6 +90,11 @@ const History = () => {
                           <span>Tipo 3 - Fresca 🌥</span>
                         </>
                       )}
+                    </td>
+                    <td>
+                      {production.invert
+                        ? "Si"
+                        : "No"}
                     </td>
                   </tr>
                 ))}
