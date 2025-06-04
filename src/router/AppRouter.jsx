@@ -9,7 +9,7 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route exact path="/simulator" element={<SimulatorForm></SimulatorForm>}></Route>
-      <Route exact path="/simulation" element={<Simulation></Simulation>}></Route>
+      <Route exact path="/simulation/:idSimulation" element={<Simulation></Simulation>}></Route>
       <Route exact path="/history" element={<History></History>}></Route>
       <Route index exact path="/" element={<Index></Index>}></Route>
     </Routes>

@@ -1,28 +1,54 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import Loader from "../Loader";
 
 const SimulatorForm = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axios.post("http://localhost:8080/production", {
+  //       quantity_plots: data.quantity_plots,
+  //     });
+  //     console.log(response.data);
+  //     const simulationId = response.data.id_production;
+  //     navigate("/simulation/" + simulationId);
+
+  //   } catch (error) {
+  //     console.error("Error al enviar los datos:", error);
+  //   }
+  // };
+
   const onSubmit = async (data) => {
     try {
+      setLoading(true); // 🔄 Mostrar loader
       const response = await axios.post("http://localhost:8080/production", {
         quantity_plots: data.quantity_plots,
       });
-      console.log(response.data);
-      // Aquí puedes manejar la respuesta de la simulación
+
+      const simulationId = response.data.id_production;
+
+      // ⏱️ Esperar 3 segundos antes de redirigir
+      setTimeout(() => {
+        navigate("/simulation/" + simulationId);
+      }, 1200);
     } catch (error) {
       console.error("Error al enviar los datos:", error);
+      setLoading(false); // ❌ Ocultar loader si hay error
     }
   };
+
   return (
     <Container className=" py-5 d-flex align-items-center justify-content-center vh-100">
       <StyledWrapper>
@@ -36,35 +62,41 @@ const SimulatorForm = () => {
             MoroScan <i class="bi bi-leaf-fill"></i>
           </h1>
 
-          <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <input
-              placeholder="Cantidad de Parcelas"
-              id="1"
-              name="quantity_plots"
-              type="number"
-              {...register("quantity_plots", {
-                required: " Este campo es obligatorio",
-                min: {
-                  value: 1,
-                  message: "Debe ingresar al menos 1 parcela",
-                },
-              })}
-            />
-
-            {errors.quantity_plots ? (
-              <p className=" mt-2">
-                <i className="bi bi-exclamation-triangle-fill text-danger"></i>
-                &nbsp;
-                {errors.quantity_plots.message}
-              </p>
+          <>
+            {loading ? (
+              <Loader />
             ) : (
-              <p className=" mt-2">&nbsp;</p>
-            )}
+              <form action="" onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  placeholder="Cantidad de Parcelas"
+                  id="1"
+                  name="quantity_plots"
+                  type="number"
+                  {...register("quantity_plots", {
+                    required: " Este campo es obligatorio",
+                    min: {
+                      value: 1,
+                      message: "Debe ingresar al menos 1 parcela",
+                    },
+                  })}
+                />
 
-            <div>
-              <input value="Simular" className="btn" type="submit" />
-            </div>
-          </form>
+                {errors.quantity_plots ? (
+                  <p className=" mt-2">
+                    <i className="bi bi-exclamation-triangle-fill text-danger"></i>
+                    &nbsp;
+                    {errors.quantity_plots.message}
+                  </p>
+                ) : (
+                  <p className=" mt-2">&nbsp;</p>
+                )}
+
+                <div>
+                  <input value="Simular" className="btn" type="submit" />
+                </div>
+              </form>
+            )}
+          </>
         </div>
       </StyledWrapper>
     </Container>

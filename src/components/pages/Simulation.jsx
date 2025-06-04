@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import PrincBtn from "../PrincBtn";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Index = () => {
+const Simulation = () => {
+  const { idSimulation } = useParams();
+  const [simulationData, setSimulationData] = useState([]);
+
+  const fetchSimulationData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/production/" + idSimulation
+      );
+      console.log("Simulation Data:", response.data);
+      setSimulationData(response.data);
+    } catch (error) {
+      console.error("Error fetching simulation data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSimulationData();
+  }, []);
+
   const data = {
     labels: [
       "Parcelas afectadas perdidas",
@@ -41,23 +61,66 @@ const Index = () => {
   return (
     <Container className="py-5 d-flex align-items-center justify-content-center">
       <div className="p-4 h-100 d-flex flex-column justify-content-center backgroundCard align-items-center">
-        <div className="text-center h-25 d-flex flex-column justify-content-center align-items-center">
+        <div className="text-center h-25 d-flex flex-column justify-content-center align-items-center mx-5">
           <h1>Resultados de la simulación</h1>
-          <p className="my-3">Fecha: 26/04/2025</p>
+          <p className="my-3">Fecha: {simulationData.date_simulation}</p>
         </div>
 
-        {/* Contenedor con gráfico y leyenda */}
-        <div className="h-100" style={{ width: "100%" }}>
-          <div style={{ width: "100%" }}>
-            <Pie data={data} options={options} className="w-100" />
+        <div className="d-flex w-100 jutify-content-end">
+          <div className="w-auto h-auto">
+            <div style={{ width: "380px", height: "380px" }}>
+              <Pie data={data} options={options} className="w-100 h-100 " />
+            </div>
+          </div>
+
+          <div className=" ms-4">
+            <h3 className=" mt-2">
+              Producción nmro:{" "}
+              {simulationData.id_production}{" "}
+              <i class="bi bi-leaf-fill"> </i>
+            </h3>
+
+            <h4 className="my-4">
+              Primavera:{" "}
+              {simulationData.spring_type === 1 && (
+                <>
+                   <span>Tipo 1 🌸</span> 
+                </>
+              )}
+              {simulationData.spring_type === 2 && (
+                <>
+                  ☀️ <span>Normal</span>
+                </>
+              )}
+              {simulationData.spring_type === 3 && (
+                <>
+                  🌧️ <span>Tardía</span>
+                </>
+              )}
+            </h4>
+
+            <ul>
+              <li>
+                Cantidad de parcelas:
+                <strong> {simulationData.quantity_plots}</strong>
+              </li>
+              <li>
+                Producción esperada:
+                <strong> {simulationData.expected_production}</strong>
+              </li>
+              <li>
+                Perdida en la producción{" "}
+                <strong> {simulationData.lost_production} </strong>
+              </li>
+              <li>
+                Producción Real:{" "}
+                <strong> {simulationData.real_production}</strong>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="text-center my-4">
-          <p>Producción Total real: 100 Tn</p>
-          <p>Parcelas Afectadas: 400</p>
-          <p>Pérdida Global (%): 12.5%</p>
-        </div>
+        {/* Contenedor con gráfico y leyenda */}
 
         <div className="ms-auto">
           <Link to="/">
@@ -69,4 +132,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Simulation;
