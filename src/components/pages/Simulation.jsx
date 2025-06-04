@@ -60,7 +60,7 @@ const Simulation = () => {
 
   return (
     <Container className="py-5 d-flex align-items-center justify-content-center">
-      <div className="p-4 h-100 d-flex flex-column justify-content-center backgroundCard align-items-center">
+      <div className="p-4 h-100 d-flex flex-column justify-content-center backgroundCard align-items-center my-auto">
         <div className="text-center h-25 d-flex flex-column justify-content-center align-items-center mx-5">
           <h1>Resultados de la simulación</h1>
           <p className="my-3">Fecha: {simulationData.date_simulation}</p>
@@ -73,60 +73,78 @@ const Simulation = () => {
             </div>
           </div>
 
-          <div className=" ms-4">
-            <h3 className=" mt-2">
-              Producción nmro:{" "}
-              {simulationData.id_production}{" "}
-              <i class="bi bi-leaf-fill"> </i>
-            </h3>
+          <div className="d-flex flex-column  ms-5 justify-content-between align-items-start h-100">
+            <div>
+              <h3 className=" mt-2">
+                Producción nmro: {simulationData.id_production}{" "}
+                <i class="bi bi-leaf-fill"> </i>
+              </h3>
 
-            <h4 className="my-4">
-              Primavera:{" "}
-              {simulationData.spring_type === 1 && (
-                <>
-                   <span>Tipo 1 🌸</span> 
-                </>
-              )}
-              {simulationData.spring_type === 2 && (
-                <>
-                  ☀️ <span>Normal</span>
-                </>
-              )}
-              {simulationData.spring_type === 3 && (
-                <>
-                  🌧️ <span>Tardía</span>
-                </>
-              )}
-            </h4>
+              <h4 className="my-4">
+                Primavera:{" "}
+                {simulationData.spring_type === 1 && (
+                  <>
+                    <span>Tipo 1 🌸</span>
+                  </>
+                )}
+                {simulationData.spring_type === 2 && (
+                  <>
+                    ☀️ <span>Normal</span>
+                  </>
+                )}
+                {simulationData.spring_type === 3 && (
+                  <>
+                    🌧️ <span>Tardía</span>
+                  </>
+                )}
+              </h4>
 
-            <ul>
-              <li>
-                Cantidad de parcelas:
-                <strong> {simulationData.quantity_plots}</strong>
-              </li>
-              <li>
-                Producción esperada:
-                <strong> {simulationData.expected_production}</strong>
-              </li>
-              <li>
-                Perdida en la producción{" "}
-                <strong> {simulationData.lost_production} </strong>
-              </li>
-              <li>
-                Producción Real:{" "}
-                <strong> {simulationData.real_production}</strong>
-              </li>
-            </ul>
+              <ul>
+                <li>
+                  Cantidad de parcelas:
+                  <strong>
+                    {" "}
+                    {Number(simulationData.quantity_plots).toFixed(2)}
+                  </strong>
+                </li>
+                <li>
+                  Producción esperada:
+                  <strong>
+                    {" "}
+                    {Number(simulationData.expected_production).toFixed(2)}
+                  </strong>
+                </li>
+                <li>
+                  Perdida en la producción{" "}
+                  <strong>
+                    {" "}
+                    {Number(simulationData.lost_production).toFixed(2)}{" "}
+                  </strong>
+                </li>
+                <li>
+                  Producción Real:{" "}
+                  <strong>
+                    {" "}
+                    {Number(simulationData.real_production).toFixed(2)}
+                  </strong>
+                </li>
+              </ul>
+            </div>
+            <div className=" ">
+              <p>Ir a:</p>
+              <div className="d-flex gap-3">
+                <Link to="/">
+                  <PrincBtn text="Menú" />
+                </Link>
+                <Link to="/history">
+                  <PrincBtn text="Historial" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Contenedor con gráfico y leyenda */}
-
-        <div className="ms-auto">
-          <Link to="/">
-            <PrincBtn text="Volver" />
-          </Link>
-        </div>
       </div>
     </Container>
   );

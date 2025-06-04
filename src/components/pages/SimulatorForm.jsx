@@ -72,11 +72,13 @@ const SimulatorForm = () => {
                   id="1"
                   name="quantity_plots"
                   type="number"
+                  min="10"
+                  step="1"
                   {...register("quantity_plots", {
                     required: " Este campo es obligatorio",
                     min: {
-                      value: 1,
-                      message: "Debe ingresar al menos 1 parcela",
+                      value: 10,
+                      message: "Debe ingresar al menos 10 parcelas",
                     },
                   })}
                 />
@@ -112,7 +114,7 @@ const StyledWrapper = styled.div`
     color: #fff;
     border-radius: 10px;
     padding-bottom: 50px;
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     box-shadow: 10px 10px 19px -2px rgba(23, 29, 18, 0.75);

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <Container className=" py-5 d-flex align-items-center justify-content-center vh-100">
-      <div className="p-4 h-100 d-flex flex-column justify-content-between backgroundCard">
+      <div className="p-4 h-auto d-flex flex-column  backgroundCard">
         <div className=" text-center h-25 d-flex flex-column justify-content-center align-items-center">
           <h1>
             MoroScan <i class="bi bi-leaf-fill"></i>
@@ -19,7 +19,7 @@ const Index = () => {
             moro” en el tabaco.
           </p>
         </div>
-        <div className="h-75 d-flex flex-row justify-content-center align-items-center ">
+        <div className="h-auto d-flex flex-row justify-content-center align-items-center ">
           <div className="w-50">
             <div>
               <h3 className="text-center mb-3">Bienvenido</h3>
