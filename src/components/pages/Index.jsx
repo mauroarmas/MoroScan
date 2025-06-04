@@ -32,6 +32,7 @@ const Index = () => {
               </p>
             </div>
             <div className="d-flex justify-content-center align-items-center mt-5 gap-3">
+              
               <Link to="/simulator">
                 <PrincBtn text="Simular"></PrincBtn>
               </Link>

@@ -1,28 +1,70 @@
+import axios from "axios";
 import React from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import PrincBtn from "../PrincBtn";
+import { useForm } from "react-hook-form";
 
 const SimulatorForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:8080/production", {
+        quantity_plots: data.quantity_plots,
+      });
+      console.log(response.data);
+      // Aquí puedes manejar la respuesta de la simulación
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
+    }
+  };
   return (
     <Container className=" py-5 d-flex align-items-center justify-content-center vh-100">
       <StyledWrapper>
-          <div className="d-flex justify-content-end ">
-            <Link to="/">
-              <i class="bi bi-x-square"></i>
-            </Link>
-          </div>
+        <div className="d-flex justify-content-end ">
+          <Link to="/">
+            <i class="bi bi-x-square"></i>
+          </Link>
+        </div>
         <div className="login wrap">
-          
-          <h1 className="h1">
+          <h1 className="h1 text-center">
             MoroScan <i class="bi bi-leaf-fill"></i>
           </h1>
-          <input placeholder="Parcelas" id="1" name="p" type="text" />
-          <input placeholder="Metros Cuadrados" id="2" name="m2" type="text" />
-          <div>
-            <input value="Simular" className="btn" type="submit" />
-          </div>
+
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
+            <input
+              placeholder="Cantidad de Parcelas"
+              id="1"
+              name="quantity_plots"
+              type="number"
+              {...register("quantity_plots", {
+                required: " Este campo es obligatorio",
+                min: {
+                  value: 1,
+                  message: "Debe ingresar al menos 1 parcela",
+                },
+              })}
+            />
+
+            {errors.quantity_plots ? (
+              <p className=" mt-2">
+                <i className="bi bi-exclamation-triangle-fill text-danger"></i>
+                &nbsp;
+                {errors.quantity_plots.message}
+              </p>
+            ) : (
+              <p className=" mt-2">&nbsp;</p>
+            )}
+
+            <div>
+              <input value="Simular" className="btn" type="submit" />
+            </div>
+          </form>
         </div>
       </StyledWrapper>
     </Container>
@@ -31,8 +73,8 @@ const SimulatorForm = () => {
 
 const StyledWrapper = styled.div`
   .login {
-    width: 450px;
-    height: 400px;
+    width: auto;
+    height: auto;
     background: #486832;
     padding: 47px;
     color: #fff;
@@ -46,7 +88,7 @@ const StyledWrapper = styled.div`
     -moz-box-shadow: 10px 10px 19px -2px rgba(23, 29, 18, 0.75);
   }
 
-  .login input[type="text"] {
+  .login input[type="number"] {
     opacity: 1;
     display: block;
     border: none;
@@ -75,7 +117,7 @@ const StyledWrapper = styled.div`
     margin: 40px 0 0 0;
     border-radius: 500px;
     font-weight: 600;
-    animation: bounce2 1.6s;
+    animation: bounce2 1.2s;
   }
 
   .h1 {
@@ -85,6 +127,7 @@ const StyledWrapper = styled.div`
     display: block;
     margin-bottom: -0px;
     text-align: center;
+    font-size: 2.2em;
   }
 
   .btn {
@@ -104,13 +147,9 @@ const StyledWrapper = styled.div`
     transition: all 0.4s ease;
   }
 
-  .login input[name="p"] {
-    animation: bounce 1s;
+  .login input[name="quantity_plots"] {
+    animation: bounce 1.2s;
     -webkit-appearance: none;
-  }
-
-  .login input[name="m2"] {
-    animation: bounce1 1.3s;
   }
 
   @media only screen and (max-width: 600px) {
