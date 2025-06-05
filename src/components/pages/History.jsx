@@ -14,7 +14,6 @@ const History = () => {
     try {
       const response = await axios.get("http://localhost:8080/production");
       console.log("History Data:", response.data);
-      // Process and set the history data state here
       setProductions(response.data);
     } catch (error) {
       console.error("Error fetching history data:", error);
@@ -24,10 +23,6 @@ const History = () => {
   useEffect(() => {
     getAllProductions();
   }, []);
-
-  // const handleRowClick = () => {
-  //   navigate("/simulation");
-  // };
 
   return (
     <div className="py-5 d-flex align-items-center vh-100 width">
@@ -50,9 +45,9 @@ const History = () => {
                 <tr>
                   <th>Fecha</th>
                   <th>Parcelas de Terreno</th>
-                  <th>Producción Esperada</th>
-                  <th>Pérdida</th>
-                  <th>Producción Real</th>
+                  <th>Producción Esperada (Kg.)</th>
+                  <th>Pérdida (Kg.)</th>
+                  <th>Producción Real (Kg.)</th>
                   <th>Tipo de primavera</th>
                   <th>Inversión</th>
                 </tr>
@@ -62,7 +57,6 @@ const History = () => {
                   <tr
                     key={production.id_production}
                     className="clickable-row"
-                    // onClick={handleRowClick}
                     onClick={() =>
                       navigate(`/simulation/${production.id_production}`)
                     }
@@ -70,10 +64,10 @@ const History = () => {
                     <td>{production.date_simulation}</td>
                     <td>{production.quantity_plots}</td>
                     <td>
-                      {Number(production.expected_production).toFixed(2)} Tn.
+                      {Number(production.expected_production).toFixed(2)} 
                     </td>
-                    <td>{Number(production.lost_production).toFixed(2)} Tn.</td>
-                    <td>{Number(production.real_production).toFixed(2)} Tn.</td>
+                    <td>{Number(production.lost_production).toFixed(2)}</td>
+                    <td>{Number(production.real_production).toFixed(2)}</td>
                     <td>
                       {production.spring_type === 1 && (
                         <>

@@ -110,21 +110,21 @@ const Simulation = () => {
                   Producción esperada:
                   <strong>
                     {" "}
-                    {Number(simulationData.expected_production).toFixed(2)} Tn.
+                    {Number(simulationData.expected_production).toFixed(2)} Kg.
                   </strong>
                 </li>
                 <li>
                   Perdida en la producción{" "}
                   <strong>
                     {" "}
-                    {Number(simulationData.lost_production).toFixed(2)} Tn.
+                    {Number(simulationData.lost_production).toFixed(2)} Kg.
                   </strong>
                 </li>
                 <li>
                   Producción Real:{" "}
                   <strong>
                     {" "}
-                    {Number(simulationData.real_production).toFixed(2)} Tn.
+                    {Number(simulationData.real_production).toFixed(2)} Kg.
                   </strong>
                 </li>
               </ul>
