@@ -59,13 +59,13 @@ const SimulatorForm = () => {
                   id="1"
                   name="quantity_plots"
                   type="number"
-                  min="10"
+                  min="1"
                   step="1"
                   {...register("quantity_plots", {
                     required: " Este campo es obligatorio",
                     min: {
-                      value: 10,
-                      message: "Debe ingresar al menos 10 parcelas",
+                      value: 1,
+                      message: "Debe ingresar al menos 1 parcela",
                     },
                   })}
                 />

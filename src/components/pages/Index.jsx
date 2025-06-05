@@ -24,11 +24,11 @@ const Index = () => {
             <div>
               <h3 className="text-center mb-3">Bienvenido</h3>
               <p>
-                Si desea iniciar una nueva simulación pulse el botón iniciar
+                Si desea iniciar una nueva simulación pulse el botón Simular
               </p>
               <p className="mb-5">
                 Si desea ver el historial de simulaciones pulse el botón
-                historial
+                Historial
               </p>
             </div>
             <div className="d-flex justify-content-center align-items-center mt-5 gap-3">
