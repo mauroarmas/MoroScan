@@ -29,7 +29,7 @@ const Simulation = () => {
   }, []);
 
   const data = {
-    labels: ["Pérdida Total (Tn)", "Producción Real (Tn)"],
+    labels: ["Pérdida Total (Kg)", "Producción Real (Kg)"],
     datasets: [
       {
         data: [
