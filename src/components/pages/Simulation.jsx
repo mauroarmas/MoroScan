@@ -103,8 +103,12 @@ const Simulation = () => {
 
               <ul>
                 <li>
-                  Cantidad de parcelas:
+                  Parcelas Totales:
                   <strong> {simulationData.quantity_plots}</strong>
+                </li>
+                <li>
+                  Parcelas Afectadas:
+                  <strong> {simulationData.quantity_affected_plots}</strong>
                 </li>
                 <li>
                   Producción esperada:
